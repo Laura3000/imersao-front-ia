@@ -1,0 +1,335 @@
+/* Estilos inspirados na Netflix */
+
+/* ============================================
+   VARIÁVEIS DE TEMA - DARK/LIGHT MODE
+   ============================================ */
+
+:root {
+  --bg-primary: #141414; /* Background principal (dark) */
+  --bg-secondary: #1a1a1a; /* Background secundário */
+  --text-primary: #ffffff; /* Texto principal */
+  --text-secondary: #b3b3b3; /* Texto secundário */
+  --accent-color: #e50914; /* Cor de destaque (vermelho Netflix) */
+  --border-color: transparent; /* Cor de borda */
+}
+
+/* Tema Light Mode */
+html[data-theme="light"] {
+  --bg-primary: #f5f5f5; /* Background claro */
+  --bg-secondary: #e8e8e8; /* Background secundário claro */
+  --text-primary: #1a1a1a; /* Texto escuro */
+  --text-secondary: #4a4a4a; /* Texto secundário escuro */
+  --accent-color: #e50914; /* Mesmo vermelho */
+  --border-color: #ddd; /* Borda mais visível em light mode */
+}
+
+html {
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+body {
+  background-color: var(
+    --bg-primary
+  ); /* Define a cor de fundo usando variável */
+  color: var(--text-primary); /* Define a cor do texto usando variável */
+  font-family:
+    "Helvetica Neue", Helvetica, Arial, sans-serif; /* Define a família de fontes sans-serif para um visual moderno */
+  margin: 0; /* Remove margens externas do body */
+  padding: 0; /* Remove preenchimento interno do body */
+  display: flex; /* Usa flexbox para layout */
+  flex-direction: column; /* Muda para coluna para acomodar o header */
+  justify-content: center; /* Centraliza o conteúdo horizontalmente */
+  align-items: center; /* Centraliza o conteúdo verticalmente */
+  min-height: 100vh; /* Define altura mínima como 100% da viewport para ocupar toda a tela */
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease; /* Transição suave entre temas */
+}
+
+/* ============================================
+   HEADER COM BOTÃO DE TEMA
+   ============================================ */
+
+.theme-header {
+  width: 100%; /* Ocupa toda a largura */
+  display: flex; /* Usa flexbox */
+  justify-content: flex-end; /* Alinha o botão à direita */
+  align-items: center; /* Centraliza verticalmente */
+  padding: 1rem 2rem; /* Espaçamento */
+  background-color: var(--bg-primary); /* Fundo usando variável */
+  border-bottom: none; /* Remove a borda */
+  transition: background-color 0.3s ease; /* Transição suave */
+}
+
+.theme-button {
+  background: none; /* Sem fundo */
+  border: none; /* Sem borda */
+  cursor: pointer; /* Muda cursor para pointer */
+  font-size: 1.5rem; /* Tamanho do ícone */
+  padding: 0.5rem; /* Espaçamento interno */
+  transition: transform 0.3s ease; /* Transição para rotação */
+  color: inherit; /* Herda a cor de texto */
+}
+
+.theme-icon {
+  display: inline-block; /* Garante que o ícone é visível */
+  font-size: 1.5rem; /* Tamanho do ícone */
+}
+
+.theme-button:hover {
+  transform: scale(1.2); /* Aumenta o ícone no hover */
+}
+
+main {
+  text-align: center; /* Alinha o texto ao centro */
+  max-width: 1200px; /* Define largura máxima para limitar o tamanho em telas grandes */
+  padding: 20px; /* Adiciona preenchimento interno de 20px */
+}
+
+h1 {
+  font-size: 3rem; /* Define o tamanho da fonte como 3 vezes o padrão */
+  margin-bottom: 2rem; /* Adiciona margem inferior de 2rem */
+  color: var(--text-primary); /* Define a cor do texto usando variável */
+}
+
+.profiles {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.profile {
+  text-decoration: none; /* Remove sublinhado dos links */
+  color: var(--text-primary); /* Define a cor do texto usando variável */
+  display: flex; /* Usa flexbox para layout do perfil */
+  flex-direction: column; /* Organiza os itens em coluna */
+  align-items: center; /* Centraliza os itens horizontalmente */
+  transition: transform 0.3s ease; /* Adiciona transição suave para transformações */
+}
+
+.profile a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.profile figcaption,
+.profile-add figcaption {
+  text-decoration: none; /* Nome dos perfis sem sublinhado */
+}
+
+.profile:hover {
+  transform: scale(1.1); /* Aumenta o tamanho em 10% no hover */
+}
+/* --- Efeito de brilho no nome do perfil (Figcaption) --- */
+
+/* Cor padrão mais suave para o texto (cinza claro) */
+.profile figcaption {
+  /* ... outros estilos que você já tem (margin-top, font-size, font-weight) ... */
+  color: var(--text-secondary); /* Usa cor secundária do texto do tema */
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease; /* Adiciona transição suave para cor e brilho */
+}
+
+/* Quando passa o mouse no perfil: */
+.profile:hover figcaption {
+  color: var(--text-primary); /* Torna o texto da cor primária do tema */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* Adiciona um brilho suave e branco ao redor do texto */
+}
+
+/* Ajuste específico para light mode no hover */
+html[data-theme="light"] .profile:hover figcaption {
+  color: #000000; /* Preto puro no light mode */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.9); /* Sombra branca mais visível em fundo claro */
+}
+
+.profile figure {
+  margin: 0; /* Remove margens da figura */
+}
+
+.profile img {
+  width: 150px; /* Define largura da imagem como 150px */
+  height: 150px; /* Define altura da imagem como 150px */
+  border-radius: 10%; /* Arredonda as bordas da imagem em 10% para forma oval */
+  object-fit: cover; /* Ajusta a imagem para cobrir o espaço sem distorcer */
+  border: 3px solid transparent; /* Adiciona borda transparente de 3px */
+  transition: border-color 0.3s ease; /* Adiciona transição suave para mudança de cor da borda */
+}
+
+.profile:hover img {
+  border-color: var(
+    --accent-color
+  ); /* Muda a cor da borda para vermelha Netflix usando variável */
+}
+
+.profile figcaption {
+  margin-top: 1rem; /* Adiciona margem superior de 1rem */
+  font-size: 1.2rem; /* Define o tamanho da fonte como 1.2 vezes o padrão */
+  font-weight: 500; /* Define o peso da fonte como médio */
+}
+
+/* --- Estilos para o Botão Adicionar Perfil --- */
+
+/* 1. Fazemos a div .add-profile-icon ter as mesmas propriedades das suas imagens */
+.profile .add-profile-icon {
+  width: 150px; /* Mesma largura da .profile img */
+  height: 150px; /* Mesma altura da .profile img */
+  border-radius: 10%; /* Mesmo arredondamento */
+  border: 3px solid transparent; /* Mesma borda invisível inicial */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+  background-color: transparent; /* Fundo transparente por padrão */
+}
+
+/* 2. O círculo cinza interno e o sinal de + */
+.add-profile-icon .plus-sign {
+  width: 80px;
+  height: 80px;
+  background-color: var(--bg-secondary); /* Usa cor secundária do tema */
+  border-radius: 50%; /* Círculo perfeito */
+  color: var(--text-secondary); /* Cor do sinal + usando variável */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  font-weight: 300;
+  line-height: 0;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* --- Efeitos de Hover específicos para o botão Adicionar --- */
+
+/* Quando passamos o mouse no perfil de adicionar: */
+.profile:hover .add-profile-icon {
+  border-color: transparent; /* No botão de adicionar, a borda geralmente não fica vermelha, o fundo muda */
+  background-color: var(--bg-secondary); /* Cor de fundo que aparece no hover */
+}
+
+.profile:hover .plus-sign {
+  background-color: transparent; /* O círculo interno "some" no hover */
+  color: var(--text-primary); /* O + muda de cor */
+}
+
+/* ============================================
+   MEDIA QUERIES - RESPONSIVIDADE
+   ============================================ */
+
+/* TABLETS - 768px e abaixo */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem; /* Reduz o tamanho do título em tablets */
+    margin-bottom: 1.5rem;
+  }
+
+  .profiles {
+    gap: 1.5rem; /* Reduz o espaço entre perfis */
+  }
+
+  .profile img,
+  .profile .add-profile-icon {
+    width: 120px; /* Reduz largura das imagens */
+    height: 120px; /* Reduz altura das imagens */
+  }
+
+  .profile figcaption {
+    font-size: 1rem; /* Reduz o tamanho da legenda */
+    margin-top: 0.8rem;
+  }
+
+  .add-profile-icon .plus-sign {
+    width: 70px; /* Reduz tamanho do círculo */
+    height: 70px;
+    font-size: 50px; /* Reduz tamanho do ícone + */
+  }
+
+  main {
+    padding: 15px; /* Reduz preenchimento em telas menores */
+  }
+}
+
+/* CELULARES - 480px e abaixo */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem; /* Reduz ainda mais o título em celulares */
+    margin-bottom: 1rem;
+  }
+
+  main {
+    padding: 10px; /* Preenchimento mínimo */
+    max-width: 100%; /* Ocupa toda a largura disponível */
+  }
+
+  .profiles {
+    gap: 1rem; /* Espaço reduzido entre perfis */
+    padding: 0 10px; /* Pequeno padding lateral */
+  }
+
+  .profile img,
+  .profile .add-profile-icon {
+    width: 100px; /* Perfis menores em celulares */
+    height: 100px;
+    border-radius: 8%;
+  }
+
+  .profile figcaption {
+    font-size: 0.9rem; /* Fonte menor em celulares */
+    margin-top: 0.6rem;
+  }
+
+  .add-profile-icon .plus-sign {
+    width: 60px; /* Círculo menor */
+    height: 60px;
+    font-size: 40px; /* Ícone + menor */
+  }
+
+  body {
+    min-height: 100vh; /* Garante que ocupa a tela inteira */
+  }
+}
+
+/* CELULARES MUITO PEQUENOS - 320px e abaixo */
+@media (max-width: 320px) {
+  h1 {
+    font-size: 1.2rem; /* Título mínimo */
+    margin-bottom: 0.8rem;
+  }
+
+  .profile img,
+  .profile .add-profile-icon {
+    width: 80px; /* Perfis ainda mais compactos */
+    height: 80px;
+  }
+
+  .profile figcaption {
+    font-size: 0.8rem; /* Texto bem pequeno */
+    margin-top: 0.5rem;
+  }
+
+  .profiles {
+    gap: 0.8rem;
+  }
+
+  .add-profile-icon .plus-sign {
+    width: 50px;
+    height: 50px;
+    font-size: 32px;
+  }
+}
+
+

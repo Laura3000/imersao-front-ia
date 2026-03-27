@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Netflix</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="theme-header">
+      <button
+        id="theme-toggle"
+        class="theme-button"
+        aria-label="Alternar tema claro/escuro"
+      >
+        <span class="theme-icon">🌙</span>
+      </button>
+    </header>
+    <main>
+      <h1>Quem está assistindo?</h1>
+      <section aria-label="Perfis disponíveis">
+        <nav>
+          <ul class="profiles">
+            <li class="profile">
+              <a href="catalogo/catalogo.html">
+                <figure>
+                  <img
+                    src="assets/perfil-1.jpg"
+                    alt="Personagem sorrindo com microfone"
+                  />
+                  <figcaption>Laura</figcaption>
+                </figure>
+              </a>
+            </li>
+
+            <li class="profile">
+              <a href="catalogo/catalogo.html">
+                <figure>
+                  <img
+                    src="assets/perfil-2.jpg"
+                    alt="Homem jovem com barba e óculos pretos"
+                  />
+                  <figcaption>Thiago</figcaption>
+                </figure>
+              </a>
+            </li>
+
+            <li class="profile">
+              <a href="catalogo/catalogo.html">
+                <figure>
+                  <img
+                    src="assets/perfil-3.jpg"
+                    alt="Jovem mulher com cabelo escuro e sorriso leve"
+                  />
+                  <figcaption>Camila</figcaption>
+                </figure>
+              </a>
+            </li>
+
+            <li class="profile">
+              <a href="catalogo/catalogo.html">
+                <figure>
+                  <img
+                    src="assets/perfil-4.jpg"
+                    alt="Ilustração pop art de homem gritando"
+                  />
+                  <figcaption>Murilo</figcaption>
+                </figure>
+              </a>
+            </li>
+
+            <li class="profile add-profile-li">
+              <a href="#" aria-label="Criar outro perfil">
+                <figure>
+                  <div
+                    class="add-profile-icon"
+                    role="img"
+                    aria-label="Ícone de adicionar"
+                  >
+                    <span class="plus-sign">+</span>
+                  </div>
+                  <figcaption>Adicionar perfil</figcaption>
+                </figure>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+    </main>
+    <script src="js/theme.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
